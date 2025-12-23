@@ -54,14 +54,12 @@ const HamarUser=new mongoose.Schema({
     type:String,
     enum:["male","female","other"],
   },
-  //and also expreince k v batt aa jaii
 
   experience:{
     title:{type:String},
     componey:{type:String},
     description:{type:String}
   },
-  //now and very importaint connection
 
   connection:[
     {type:mongoose.Schema.Types.ObjectId,
@@ -75,4 +73,3 @@ const Userdatabase=mongoose.model('Userdatabase',HamarUser);
 module.exports=Userdatabase;
 
 
-//here  i am going to working all the best and the new signup,logina and 

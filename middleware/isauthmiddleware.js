@@ -7,7 +7,8 @@ const isauthmiddle = (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         message: "Please login first"
-      });
+      })
+      
     }
 
     const decoded = jwt.verify(
@@ -26,3 +27,4 @@ const isauthmiddle = (req, res, next) => {
   }
 };
 module.exports=isauthmiddle;
+

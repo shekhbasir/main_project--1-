@@ -102,7 +102,7 @@ const Hamarlogout = async (req, res) => {
     res.clearCookie("token", {
       httpOnly: true,
       sameSite: "strict",
-      secure: false // production me true
+      secure: false 
     });
 
     return res.status(200).json({
