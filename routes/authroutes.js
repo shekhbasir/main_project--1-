@@ -1,18 +1,13 @@
-//this is my authroutes that is going to used for the signup operationa dn the similar types of the work 
+// routes/authroutes.js
+const express = require("express");
+const authroutes = express.Router();
 
-const express=require('express');
-const{ Hamarsignup,Hamarlogin,Hamarlogout}=require("../controllers/auth");
-const authroutes=express.Router();
-const isauthmiddle=require('../middleware/isauthmiddleware');
-const sabdetail=require('../controllers/sabdetail');
-// const uploadingimg=require('../controllers/handlingimage');
-const upload=require("../middleware/multer");
+const upload = require("../middleware/multer");
+const uploadingimg = require("../controllers/handlingimage");
+const updateprofile = require("../controllers/updateprofile");
+const isauthmiddle = require("../middleware/isauthmiddleware");
 
-authroutes.post('/signup',Hamarsignup);
-authroutes.post('/login',Hamarlogin)
-authroutes.get('/logout',isauthmiddle,Hamarlogout);
-authroutes.get('/sabdetail',isauthmiddle,sabdetail);
-authroutes.post('/upload',upload.single("image"));
+authroutes.post("/upload", isauthmiddle, upload.single("image"), uploadingimg);
+authroutes.put("/updateprofile", isauthmiddle, updateprofile);
 
-module.exports=authroutes;
-
+module.exports = authroutes;

@@ -1,27 +1,16 @@
-//here i am going to set up the code for the clodinary 
-import { v2 as cloudinary } from 'cloudinary';
+const cloudinary = require("cloudinary").v2;
 
-const hamarcloudinary=async(filepath)=>{
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
-  //otherwie i am going to return from here only ...
-  cloudinary.config({ 
-        cloud_name:process.env.HAMAR_CLOUD_NAME, 
-        api_key:process.env.CLOUD_KEY , 
-        api_secret: process.env.CLOUD_SECRET 
-    });
-  try{
+const uploadCloudinary = async (filepath) => {
+  const result = await cloudinary.uploader.upload(filepath, {
+    folder: "profile",
+  });
+  return result.secure_url;
+};
 
-    if(!filepath){
-      return null;
-    }
-    //remainig kaam i am going to writen here for my task 
-    const uploadResult = await cloudinary.uploader.upload(filepath)
-    fs.unlinkSync(filepath);
-    return uploadResult.secure_url;
-      
-  }catch(error){
-
-  }
-}
-// module.exports=hamarcloudinary;
-export default hamarcloudinary;
+module.exports = uploadCloudinary;

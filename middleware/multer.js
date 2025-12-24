@@ -3,7 +3,7 @@ const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./public"); // temp folder
+    cb(null, "./public"); 
   },
   filename: (req, file, cb) => {
     const uniqueName =
